@@ -30,7 +30,7 @@ public class main extends Application {
         final TextField QComboBox = new TextField();
         GridPane.setConstraints(QComboBox,2,0);
         QComboBox.setPromptText("QComboBox");
-        Button QPushButton = new Button("QPushButton");
+        final Button QPushButton = new Button("QPushButton");
         GridPane.setConstraints(QPushButton,1,0);
         QPushButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -39,6 +39,26 @@ public class main extends Application {
                     newin.newwindow("невозможно сделать");
                 }
                 else QComboBox.setText(QLineEdit.getText());
+            }
+        });
+
+        final Button QPushButton1 = new Button("QPushButton1");
+        GridPane.setConstraints(QPushButton1,0,3);
+        final Button QPushButton2 = new Button("QPushButton2");
+        GridPane.setConstraints(QPushButton2,1,3);
+        QPushButton1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                QPushButton2.setText(QLineEdit.getText());
+            }
+        });
+
+        QPushButton2.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                String h = QPushButton2.getText();
+                QPushButton2.setText(QPushButton1.getText());
+                QPushButton1.setText(h);
             }
         });
 
@@ -56,7 +76,11 @@ public class main extends Application {
 
 
 
-        root.getChildren().addAll(QLineEdit,QComboBox,QPushButton);
+
+
+
+
+        root.getChildren().addAll(QLineEdit,QComboBox,QPushButton,QPushButton1,QPushButton2);
         Scene scene = new Scene(root,500,500);
         stage.setScene(scene);
         stage.setWidth(500);
