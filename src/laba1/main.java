@@ -2,18 +2,24 @@ package laba1;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import javax.swing.*;
+import javax.swing.text.html.HTMLDocument;
+import java.awt.*;
+import java.util.Iterator;
 
 
 /**
@@ -34,14 +40,32 @@ public class main extends Application {
         QLineEdit.setPromptText("QLineEdit");
         final ChoiceBox QComboBox = new ChoiceBox();
         final Button QPushButton = new Button("QPushButton");
-        QComboBox.getItems().add("first");
-        QComboBox.getItems().add("second");
-        int i = 0;
-        while (){
-           i++;
-        }
+        QComboBox.getItems().iterator().hasNext();
+        QPushButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                boolean bol = true;
+                if (QComboBox.getItems().isEmpty()){
+                    QComboBox.getItems().add(QLineEdit.getText());
+                }else {
+                    ObservableList<String> items = QComboBox.getItems();
+                    for (String ite : items) {
+                        if (QLineEdit.getText().equals(ite.toString())) {
+                            newin.newwindow("такое уже есть");
+                            bol = false;
+                            break;
+                        }
+                    }
+                    if (bol == true){
+                        QComboBox.getItems().add(QLineEdit.getText());
+                    }
+                }
+            }
+        });
 
-        System.out.println(i);
+
+
+
 
         first.getChildren().addAll(QLineEdit,QPushButton,QComboBox);
         GridPane.setConstraints(first,0,0);
