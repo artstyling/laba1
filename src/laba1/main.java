@@ -37,7 +37,7 @@ public class main extends Application {
         QComboBox.getItems().add("first");
         QComboBox.getItems().add("second");
         int i = 0;
-        while (!QComboBox.){
+        while (){
            i++;
         }
 
