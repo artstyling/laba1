@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
+import javafx.scene.GroupBuilder;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -37,14 +38,17 @@ public class main extends Application {
 
         HBox first = new HBox(10);
         final TextField QLineEdit = new TextField();
-        QLineEdit.setPromptText("QLineEdit");
-        final ChoiceBox QComboBox = new ChoiceBox();
-        final Button QPushButton = new Button("QPushButton");
+        QLineEdit.setPromptText("задание1");
+        final ComboBox QComboBox = new ComboBox();
+        final Button QPushButton = new Button("задание1");
         QComboBox.getItems().iterator().hasNext();
         QPushButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 boolean bol = true;
+                if(QLineEdit.getText().isEmpty()){
+                    newin.newwindow("введите текст");
+                }else
                 if (QComboBox.getItems().isEmpty()){
                     QComboBox.getItems().add(QLineEdit.getText());
                 }else {
@@ -63,18 +67,14 @@ public class main extends Application {
             }
         });
 
-
-
-
-
         first.getChildren().addAll(QLineEdit,QPushButton,QComboBox);
         GridPane.setConstraints(first,0,0);
         HBox second = new HBox(10);
         final TextField tixt = new TextField();
-        tixt.setPromptText("QLineEdit");
-        final Button QPushButton1 = new Button("QPushButton1");
+        tixt.setPromptText("задание2");
+        final Button QPushButton1 = new Button("кнопка1");
         GridPane.setConstraints(QPushButton1,0,3);
-        final Button QPushButton2 = new Button("QPushButton2");
+        final Button QPushButton2 = new Button("кнопка2");
         GridPane.setConstraints(QPushButton2,1,3);
         QPushButton1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -96,20 +96,19 @@ public class main extends Application {
         HBox bitons = new HBox(10);
          HBox three = new HBox(10);
         final TextField text2 = new TextField();
-        text2.setPromptText("QLineEdit");
-        final RadioButton[] rb = new RadioButton[]{
-                new RadioButton("first"),
-                new RadioButton("second"),
-                new RadioButton("the third"),
+        text2.setPromptText("задание3");
+        ToggleGroup butgroup = new ToggleGroup();
+        final RadioButton rb1 = new RadioButton("first");
+        final RadioButton rb2 = new RadioButton("second");
+        final RadioButton rb3 = new RadioButton("the third");
+
+        rb1.setToggleGroup(butgroup);
+        rb2.setToggleGroup(butgroup);
+        rb3.setToggleGroup(butgroup);
 
 
+        bitons.getChildren().addAll(rb1,rb2,rb3);
 
-        };
-
-
-
-
-            bitons.getChildren().addAll(rb);
 
         Button button = new Button("click");
 
@@ -120,20 +119,19 @@ public class main extends Application {
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                boolean a = true;
-                for (int i = 0;i<3;i++){
-                    if (text2.getText().equals(rb[i].getText())){
-                        for (int j = 0;j<3;j++)
-                            rb[j].setSelected(false);
-
-                        rb[i].setSelected(true);
-                        a = false;
-                    }
-
-                }
-                if (a == true){
+                if (text2.getText().isEmpty()){
+                    newin.newwindow("введите текст");
+                }else
+                if (text2.getText().equals(rb1.getText())){
+                    rb1.setSelected(true);
+                }else
+                if (text2.getText().equals(rb2.getText())){
+                    rb2.setSelected(true);
+                }else
+                if (text2.getText().equals(rb3.getText())){
+                    rb3.setSelected(true);
+                }else
                     newin.newwindow("такого нет");
-                }
             }
         });
 
@@ -152,7 +150,7 @@ public class main extends Application {
         VBox kill = new VBox(10);
 
         final TextField text3 = new TextField();
-        text3.setPromptText("напиши сюда");
+        text3.setPromptText("задание4");
 
 
 
@@ -179,7 +177,6 @@ public class main extends Application {
 
         GridPane.setConstraints(four,0,4);
         four.getChildren().addAll(text3,button1,kill);
-
 
         kill.getChildren().addAll(che);
 
