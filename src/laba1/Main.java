@@ -38,7 +38,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         stage.setTitle("laba1");
         GridPane root = new GridPane();
-        root.setPadding(new Insets(10,10,10,10));
+        root.setPadding(new Insets(10, 10, 10, 10));
         root.setHgap(5);
         root.setVgap(5);
 
@@ -52,12 +52,11 @@ public class Main extends Application {
             @Override
             public void handle(ActionEvent event) {
                 boolean bol = true;
-                if(qlineedit.getText().isEmpty()){
+                if (qlineedit.getText().isEmpty()) {
                     Newin.newwindow("введите текст");
-                }else
-                if (qcombobox.getItems().isEmpty()){
+                } else if (qcombobox.getItems().isEmpty()) {
                     qcombobox.getItems().add(qlineedit.getText());
-                }else {
+                } else {
                     ObservableList<String> items = qcombobox.getItems();
                     for (String ite : items) {
                         if (qlineedit.getText().equals(ite.toString())) {
@@ -66,22 +65,22 @@ public class Main extends Application {
                             break;
                         }
                     }
-                    if (bol == true){
+                    if (bol == true) {
                         qcombobox.getItems().add(qlineedit.getText());
                     }
                 }
             }
         });
 
-        first.getChildren().addAll(qlineedit,qpushbutton,qcombobox);
-        GridPane.setConstraints(first,0,0);
+        first.getChildren().addAll(qlineedit, qpushbutton, qcombobox);
+        GridPane.setConstraints(first, 0, 0);
         HBox second = new HBox(10);
         final TextField tixt = new TextField();
         tixt.setPromptText("задание2");
         final Button QPushButton1 = new Button("кнопка1");
-        GridPane.setConstraints(QPushButton1,0,3);
+        GridPane.setConstraints(QPushButton1, 0, 3);
         final Button QPushButton2 = new Button("кнопка2");
-        GridPane.setConstraints(QPushButton2,1,3);
+        GridPane.setConstraints(QPushButton2, 1, 3);
         QPushButton1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -97,10 +96,10 @@ public class Main extends Application {
                 QPushButton1.setText(h);
             }
         });
-        second.getChildren().addAll(QPushButton1,tixt,QPushButton2);
-        GridPane.setConstraints(second,0,2);
+        second.getChildren().addAll(QPushButton1, tixt, QPushButton2);
+        GridPane.setConstraints(second, 0, 2);
         HBox bitons = new HBox(10);
-         HBox three = new HBox(10);
+        HBox three = new HBox(10);
         final TextField text2 = new TextField();
         text2.setPromptText("задание3");
         ToggleGroup butgroup = new ToggleGroup();
@@ -113,29 +112,26 @@ public class Main extends Application {
         rb3.setToggleGroup(butgroup);
 
 
-        bitons.getChildren().addAll(rb1,rb2,rb3);
+        bitons.getChildren().addAll(rb1, rb2, rb3);
 
         Button button = new Button("click");
 
-        three.getChildren().addAll(text2,button,bitons);
+        three.getChildren().addAll(text2, button, bitons);
 
-        GridPane.setConstraints(three,0,3);
+        GridPane.setConstraints(three, 0, 3);
 
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (text2.getText().isEmpty()){
+                if (text2.getText().isEmpty()) {
                     Newin.newwindow("введите текст");
-                }else
-                if (text2.getText().equals(rb1.getText())){
+                } else if (text2.getText().equals(rb1.getText())) {
                     rb1.setSelected(true);
-                }else
-                if (text2.getText().equals(rb2.getText())){
+                } else if (text2.getText().equals(rb2.getText())) {
                     rb2.setSelected(true);
-                }else
-                if (text2.getText().equals(rb3.getText())){
+                } else if (text2.getText().equals(rb3.getText())) {
                     rb3.setSelected(true);
-                }else
+                } else
                     Newin.newwindow("такого нет");
             }
         });
@@ -149,7 +145,6 @@ public class Main extends Application {
                 new CheckBox("the third")
 
 
-
         };
 
         VBox kill = new VBox(10);
@@ -158,16 +153,15 @@ public class Main extends Application {
         text3.setPromptText("задание4");
 
 
-
         Button button1 = new Button("click 2");
 
 
         button1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (text3.getText().isEmpty()){
+                if (text3.getText().isEmpty()) {
                     Newin.newwindow("введите текст");
-                }else {
+                } else {
                     boolean a = true;
                     for (int i = 0; i < 3; i++) {
                         if (text3.getText().equals(che[i].getText())) {
@@ -190,20 +184,13 @@ public class Main extends Application {
         });
 
 
-
-        GridPane.setConstraints(four,0,4);
-        four.getChildren().addAll(text3,button1,kill);
+        GridPane.setConstraints(four, 0, 4);
+        four.getChildren().addAll(text3, button1, kill);
 
         kill.getChildren().addAll(che);
 
 
-
         VBox five = new VBox(10);
-
-
-
-
-
 
 
         TableColumn<Tabble, String> pervoecoloms = new TableColumn<>("first");
@@ -216,21 +203,13 @@ public class Main extends Application {
         vtoroecoloms.setCellValueFactory(new PropertyValueFactory<Tabble, String>("vtoroe"));
 
 
-
-
         table = new TableView<>();
         table.setItems(gettablicka());
-        table.getColumns().addAll(pervoecoloms,vtoroecoloms);
-
-
+        table.getColumns().addAll(pervoecoloms, vtoroecoloms);
 
 
         five.getChildren().add(table);
-        GridPane.setConstraints(five,0,5);
-
-
-
-
+        GridPane.setConstraints(five, 0, 5);
 
 
         HBox fifive = new HBox(10);
@@ -246,14 +225,12 @@ public class Main extends Application {
         fifive.getChildren().add(knopka2);
 
 
-
         knopka0.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                    addbatton();
+                addbatton();
             }
         });
-
 
 
         knopka1.setOnAction(new EventHandler<ActionEvent>() {
@@ -272,15 +249,11 @@ public class Main extends Application {
         });
 
 
-
-
-
-
         five.getChildren().add(fifive);
 
 
-        root.getChildren().addAll(first,second,three,four,five);
-        Scene scene = new Scene(root,500,500);
+        root.getChildren().addAll(first, second, three, four, five);
+        Scene scene = new Scene(root, 500, 500);
         stage.setScene(scene);
         stage.setWidth(660);
         stage.setHeight(660);
@@ -288,70 +261,82 @@ public class Main extends Application {
     }
 
 
-
-
     public static void main(String[] args) {
         launch(args);
     }
 
 
-
-    public ObservableList<Tabble> gettablicka(){
+    public ObservableList<Tabble> gettablicka() {
 
         ObservableList<Tabble> tablickis = FXCollections.observableArrayList();
 
         return tablickis;
     }
 
-public void addbatton(){
-    Tabble tabble = new Tabble();
-    if (text4.getText().isEmpty()){
-        Newin.newwindow("введите текст");
-    }
-    else{
-        tabble.setPervoe(text4.getText());
-        table.getItems().add(tabble);
-        text4.clear();
-    }
-
-
-
-}
-
-public void result1(){
-    if (table.getSelectionModel().getSelectedItem().getPervoe().isEmpty()){
-        return;
-    }else {
-
-
-        table.getSelectionModel().getSelectedItem().setVtoroe(table.getSelectionModel().getSelectedItem().getPervoe());
-        table.getSelectionModel().getSelectedItem().setPervoe("");
-        table.getColumns().get(0).setVisible(false);
-        table.getColumns().get(0).setVisible(true);
+    public void addbatton() {
+        Tabble tabble = new Tabble();
+        if (text4.getText().isEmpty()) {
+            Newin.newwindow("введите текст");
+        } else {
+            tabble.setPervoe(text4.getText());
+            table.getItems().add(tabble);
+            text4.clear();
+        }
 
 
     }
 
+    public void result1() {
+        if (table.getItems().isEmpty()) {
+                Newin.newwindow("таблица пуста");
+        }else {
+            if (table.getSelectionModel().isEmpty()){
+                Newin.newwindow("ничего не выбрано");
+            }else {
 
 
-}
+                if (table.getSelectionModel().getSelectedItem().getPervoe().isEmpty()) {
+                    return;
+                } else {
 
-public void result2(){
 
-    if(table.getSelectionModel().getSelectedItem().getVtoroe().isEmpty()){
-        return;
-    }else{
-        table.getSelectionModel().getSelectedItem().setPervoe(table.getSelectionModel().getSelectedItem().getVtoroe());
-        table.getSelectionModel().getSelectedItem().setVtoroe("");
-        table.getColumns().get(0).setVisible(false);
-        table.getColumns().get(0).setVisible(true);
+                    table.getSelectionModel().getSelectedItem().setVtoroe(table.getSelectionModel().getSelectedItem().getPervoe());
+                    table.getSelectionModel().getSelectedItem().setPervoe("");
+                    table.getColumns().get(0).setVisible(false);
+                    table.getColumns().get(0).setVisible(true);
 
+
+                }
+            }
+        }
 
     }
 
+    public void result2() {
 
-}
+
+        if (table.getItems().isEmpty()) {
+            Newin.newwindow("таблица пуста");
+        } else {
+            if (table.getSelectionModel().isEmpty()){
+                Newin.newwindow("ничего не выбрано");
+
+            }else {
+                if (table.getSelectionModel().getSelectedItem().getVtoroe().isEmpty()) {
+                    return;
+                } else {
+                    table.getSelectionModel().getSelectedItem().setPervoe(table.getSelectionModel().getSelectedItem().getVtoroe());
+                    table.getSelectionModel().getSelectedItem().setVtoroe("");
+                    table.getColumns().get(0).setVisible(false);
+                    table.getColumns().get(0).setVisible(true);
 
 
+                }
+
+            }
+
+        }
+
+    }
 
 }
