@@ -1,5 +1,6 @@
 package laba1;
 
+import javafx.stage.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -7,13 +8,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 /**
  * Created by bystr on 23/02/17.
  */
-public class newin {
+public class Newin {
     public static void newwindow(String string){
 
         final Stage window = new Stage();
